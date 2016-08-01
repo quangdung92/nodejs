@@ -1,0 +1,23 @@
+{
+  "name": "rola-chan",
+  "version": "1.0.0",
+  "description": "Authenticate",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ND",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.x",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express-session": "*",
+    "bcrypt-nodejs": "*",
+    "ejs": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "mysql": "*",
+    "bookshelf": "0.5"
+  }
+}
