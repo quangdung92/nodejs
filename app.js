@@ -54,7 +54,9 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use(session({secret: 'SURIMA', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true}));
+// cookie: { maxAge: 60000 },
+app.use(session({secret: 'SURIMA',resave: true, saveUninitialized: true}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -86,9 +88,8 @@ app.use(route.notFound404);
 // Socket io
 var io = require('socket.io')(http);
 io.on('connection', function(socket){
-    console.log('a user connected');
-    socket.on('disconnect', function(){
-        console.log('user disconnected');
+    socket.on('chat message', function(msg){
+        io.emit('chat message', msg);
     });
 });
 
