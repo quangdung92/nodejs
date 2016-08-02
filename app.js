@@ -16,6 +16,7 @@ var route = require('./route');
 var Model = require('./model');
 
 var app = express();
+var http = require('http').Server(app);
 
 passport.use(new LocalStrategy(function(username, password, done) {
     new Model.User({username: username}).fetch().then(function(data) {
@@ -44,13 +45,13 @@ passport.deserializeUser(function(username, done) {
 });
 
 
-app.set('port', process.env.PORT || 3002);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(cookieParser());
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(session({secret: 'SURIMA', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true}));
@@ -82,10 +83,26 @@ app.get('/signout', route.signOut);
 // 404 not found
 app.use(route.notFound404);
 
+// Socket io
+var io = require('socket.io')(app);
+io.on('connection', function(socket){
+    console.log('a user connected');
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+});
 
+// Check connect
+// http.listen(3000, function(){
+//     console.log('listening on *:3000');
+// });
+
+app.set('port', process.env.PORT || 3002);
 var server = app.listen(app.get('port'), function(err) {
     if(err) throw err;
 
     var message = 'Server is running @ http://localhost:' + server.address().port;
     console.log(message);
 });
+
+

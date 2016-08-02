@@ -3,6 +3,10 @@
 <head>
     <title><%= title %></title>
 </head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+</script>
 <body>
 <p>
     Welcome <strong><%= user.username %></strong>

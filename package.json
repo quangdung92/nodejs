@@ -9,16 +9,17 @@
   "author": "ND",
   "license": "ISC",
   "dependencies": {
-    "express": "4.x",
-    "body-parser": "*",
-    "cookie-parser": "*",
-    "express-session": "*",
     "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "bookshelf": "0.5",
+    "cookie-parser": "*",
     "ejs": "*",
+    "express": "4.x",
+    "express-session": "*",
+    "mysql": "*",
     "passport": "*",
     "passport-local": "*",
-    "mysql": "*",
-    "bookshelf": "0.5"
+    "socket.io": "^1.4.8"
   },
   "devDependencies": {
     "nodemon": "^1.10.0"

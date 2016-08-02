@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "host": "localhost",
+    "user": "root",
+    "password": "sa1234",
+    "database": "grooovyChatDB",
+    "charset": "UTF8_GENERAL_CI"
+  }
+}
