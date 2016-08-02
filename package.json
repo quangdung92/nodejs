@@ -19,5 +19,8 @@
     "passport-local": "*",
     "mysql": "*",
     "bookshelf": "0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
   }
 }

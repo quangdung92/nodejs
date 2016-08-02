@@ -37,17 +37,20 @@ var signInPost = function(req, res, next) {
         if(err) {
             return res.render('signin', {title: 'Sign In', errorMessage: err.message});
         }
-
         if(!user) {
             return res.render('signin', {title: 'Sign In', errorMessage: info.message});
         }
+        console.log(user);
         return req.logIn(user, function(err) {
-            if(err) {
-                return res.render('signin', {title: 'Sign In', errorMessage: err.message});
-            } else {
-                return res.redirect('/');
+                if (err) {
+                    return res.render('signin', {title: 'Sign In', errorMessage: err.message});
+                } else {
+                    // return res.redirect('/');
+                    return res.json({"message": "login successful!!"});
+                }
             }
-        });
+
+        );
     })(req, res, next);
 };
 
