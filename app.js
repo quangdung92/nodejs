@@ -84,7 +84,7 @@ app.get('/signout', route.signOut);
 app.use(route.notFound404);
 
 // Socket io
-var io = require('socket.io')(app);
+var io = require('socket.io')(http);
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('disconnect', function(){
@@ -93,16 +93,16 @@ io.on('connection', function(socket){
 });
 
 // Check connect
-// http.listen(3000, function(){
-//     console.log('listening on *:3000');
-// });
-
-app.set('port', process.env.PORT || 3002);
-var server = app.listen(app.get('port'), function(err) {
-    if(err) throw err;
-
-    var message = 'Server is running @ http://localhost:' + server.address().port;
-    console.log(message);
+http.listen(3000, function(){
+    console.log('listening on *:3000');
 });
+
+// app.set('port', process.env.PORT || 3002);
+// var server = app.listen(app.get('port'), function(err) {
+//     if(err) throw err;
+//
+//     var message = 'Server is running @ http://localhost:' + server.address().port;
+//     console.log(message);
+// });
 
 

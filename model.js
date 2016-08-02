@@ -1,8 +1,8 @@
 var DB = require('./db').DB;
 
 var User = DB.Model.extend({
-    tableName: 'tblUsers',
-    idAttribute: 'userId',
+    tableName: 'users',
+    idAttribute: 'id',
 });
 
 module.exports = {

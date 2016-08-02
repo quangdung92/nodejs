@@ -4,7 +4,7 @@ var config = {
     host: 'localhost',  // your host
     user: 'root', // your database user
     password: 'sa1234', // your database password
-    database: 'dbUsers',
+    database: 'grooovyChatDB',
     charset: 'UTF8_GENERAL_CI'
 };
 
