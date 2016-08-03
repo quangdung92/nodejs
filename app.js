@@ -10,10 +10,11 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 // custom libraries
-// routes
-var route = require('./route');
+// UserCtrl
+var userCtrl = require('./controller/userCtrl');
+var messageCtrl = require('./controller/messageCtrl');
 // model
-var Model = require('./model');
+var Model = require('./model/user');
 
 var app = express();
 var http = require('http').Server(app);
@@ -61,29 +62,29 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // GET
-app.get('/', route.index);
+app.get('/', userCtrl.index);
 
 // signin
 // GET
-app.get('/signin', route.signIn);
+app.get('/signin', userCtrl.signIn);
 // POST
-app.post('/signin', route.signInPost);
+app.post('/signin', userCtrl.signInPost);
 
 // signup
 // GET
-app.get('/signup', route.signUp);
+app.get('/signup', userCtrl.signUp);
 // POST
-app.post('/signup', route.signUpPost);
+app.post('/signup', userCtrl.signUpPost);
 
 // logout
 // GET
-app.get('/signout', route.signOut);
+app.get('/signout', userCtrl.signOut);
 
 /********************************/
 
 /********************************/
 // 404 not found
-app.use(route.notFound404);
+app.use(userCtrl.notFound404);
 
 // Socket io
 var io = require('socket.io')(http);

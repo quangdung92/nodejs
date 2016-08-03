@@ -58,9 +58,9 @@
     <a href="/signout" title="sign out">sign out</a>
 </p>
 <ul id="messages"></ul>
-<form action="">
+<form method="post" action="/chat">
     <input id="m" autocomplete="off"/>
-    <button id="subBtn"">Send</button>
+    <button id="subBtn">Send</button>
 </form>
 <script>
     var socket = io();
