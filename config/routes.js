@@ -1,29 +1,30 @@
 var express = require('express');
-var app = express();
+var router = express.Router();
+var userCtrl = require('../controller/userCtrl');
+var messageCtrl = require('../controller/messageCtrl');
 
 // GET
-app.get('/', userCtrl.index);
+router.get('/', userCtrl.index);
 
 // signin
 // GET
-app.get('/signin', userCtrl.signIn);
+router.get('/signin', userCtrl.signIn);
 // POST
-app.post('/signin', userCtrl.signInPost);
+router.post('/signin', userCtrl.signInPost);
 
 // signup
 // GET
-app.get('/signup', userCtrl.signUp);
+router.get('/signup', userCtrl.signUp);
 // POST
-app.post('/signup', userCtrl.signUpPost);
+router.post('/signup', userCtrl.signUpPost);
 
 // logout
 // GET
-app.get('/signout', userCtrl.signOut);
+router.get('/signout', userCtrl.signOut);
 
 /********************************/
 
 /********************************/
 // 404 not found
-app.use(userCtrl.notFound404);
-
-
+router.use(userCtrl.notFound404);
+module.exports = router;

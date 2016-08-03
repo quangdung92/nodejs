@@ -17,6 +17,8 @@ var messageCtrl = require('./controller/messageCtrl');
 var Model = require('./model/user');
 
 var app = express();
+var routes = require('./config/routes');
+
 var http = require('http').Server(app);
 
 passport.use(new LocalStrategy(function(username, password, done) {
@@ -60,32 +62,7 @@ app.use(session({secret: 'SURIMA',resave: true, saveUninitialized: true}));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-// GET
-app.get('/', userCtrl.index);
-
-// signin
-// GET
-app.get('/signin', userCtrl.signIn);
-// POST
-app.post('/signin', userCtrl.signInPost);
-
-// signup
-// GET
-app.get('/signup', userCtrl.signUp);
-// POST
-app.post('/signup', userCtrl.signUpPost);
-
-// logout
-// GET
-app.get('/signout', userCtrl.signOut);
-
-/********************************/
-
-/********************************/
-// 404 not found
-app.use(userCtrl.notFound404);
-
+app.use('/', routes);
 // Socket io
 var io = require('socket.io')(http);
 io.on('connection', function(socket){
