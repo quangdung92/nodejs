@@ -83,5 +83,4 @@ http.listen(3000, function(){
 //     var message = 'Server is running @ http://localhost:' + server.address().port;
 //     console.log(message);
 // });
-
-
+module.exports.io = io;

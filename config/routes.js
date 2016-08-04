@@ -22,6 +22,11 @@ router.post('/signup', userCtrl.signUpPost);
 // GET
 router.get('/signout', userCtrl.signOut);
 
+
+// Message
+// create POST
+router.post('/chat', messageCtrl.create);
+
 /********************************/
 
 /********************************/

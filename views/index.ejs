@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title><%= title %></title>
 </head>
@@ -54,21 +54,24 @@
 </style>
 <body>
 <p>
-    Welcome <strong><%= user.username %></strong>
+    Welcome <strong><%= user.username %></strong></br>
+    <% if(typeof(stat) !== 'undefined') {%>
+    <strong><%= stat %></strong>
+    <% } %>
     <a href="/signout" title="sign out">sign out</a>
 </p>
 <ul id="messages"></ul>
 <form method="post" action="/chat">
-    <input id="m" autocomplete="off"/>
-    <button id="subBtn">Send</button>
+    <input type="text" name="m" id="m" autocomplete="off"/>
+    <button type="submit">Send</button>
 </form>
 <script>
     var socket = io();
-    $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-    });
+//    $('form').submit(function(){
+//        socket.emit('chat message', $('#m').val());
+//        $('#m').val('');
+//        return false;
+//    });
     socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
     });
